@@ -25,19 +25,21 @@ var countVowels = function(str, count) {
   count = count || 0;
 
   if ( str.length ) {
-
     if (  vowels.indexOf(str[0]) > -1 ) {
       count++;
     }
     return countVowels(str.substring(1), count);
   }  
+  
   return count;
 };
 
-// var string1 = 'abcedfg'; // => 2
-// console.log(countVowels(string1));
-// var string2 = 'dogs love cammo'; // => 5
-// console.log(countVowels(string2));
+// -- tests --
+// var string1 = 'abcedfg'; 
+// console.log(countVowels(string1)); // => 2
+
+// var string2 = 'dogs love cammo'; 
+// console.log(countVowels(string2)); // => 5
 
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
@@ -49,9 +51,26 @@ var countVowels = function(str, count) {
 // sumDigits(49) → 13
 // sumDigits(12) → 3
 
-var recursiveSum = function(n){
-
+var recursiveSum = function(n) {
+  var digits = String(n);
+  var sum = 0;
+  
+  if ( digits.length ) {
+    sum+= Number(digits[0]);
+    return sum + recursiveSum(digits.substring(1));
+  }
+  return sum;
 };
+
+// -- tests --
+// var inputA = recursiveSum(126); 
+// console.log(inputA);  // → 9
+
+// var inputB = recursiveSum(49); // → 13
+// console.log(inputB); // → 13
+
+// var inputC = recursiveSum(12);
+// console.log(inputC); //→ 3
 
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
